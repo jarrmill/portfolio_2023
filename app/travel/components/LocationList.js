@@ -54,7 +54,7 @@ export default function LocationList({ content }) {
         const imageMap = getImagesMap();
         const node = imageMap.get(hoveredTag);
 
-        gsap.to(node, { opacity: 0, duration: 1 });
+        gsap.to(node, { opacity: 0, duration: .6 });
     }
 
     const handleMouseEnter = (itemId, idx) => {
