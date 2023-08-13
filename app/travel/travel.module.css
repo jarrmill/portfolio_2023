@@ -1,0 +1,55 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6rem;
+    min-height: 100vh;
+    background-color: #171a1b;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.main ul {
+    list-style-type: none;
+    z-index: 10;
+}
+
+.main li {
+    font-size: 5rem;
+    transition: clip-path 1s;
+    position: relative;
+}
+
+.location {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: all;
+}
+
+.location_ghost {
+    position: absolute;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    opacity: .3;
+}
+
+.image_container {
+    position: absolute;
+    top: 10vh;
+    left: 40vw;
+    pointer-events: none;
+    z-index: -10;
+}
+.tag_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    object-fit: cover;
+    height: 70vh;
+}
+.hidden {
+    opacity: 0;
+    transition: opacity .5s;
+}

@@ -1,0 +1,17 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6rem;
+    min-height: 100vh;
+    background-color: #171a1b;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.main img {
+    width: auto;
+    height: 90vh;
+    object-fit: cover;
+    margin-bottom: 4rem;
+}
