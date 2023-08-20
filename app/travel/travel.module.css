@@ -52,3 +52,43 @@
 .hidden {
     opacity: 0;
 }
+
+.navbar_container {
+    display: flex;
+    background-color: #171a1b;
+    align-items: center;
+    padding: 10px;
+    height: 60px;
+}
+
+.navbar_logo {
+    display: inline;
+}
+
+.navbar_section {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.navbar_section::after {
+    flex: 1;
+    display: inline;
+    content: '';
+    height: 4px;
+    background-color: orange;
+    transform: scaleX(0);
+    transition: all 1s;
+    transform-origin: 0% 50%;
+}
+
+.navbar_section p {
+    font-weight: 100;
+}
+
+.navbar_section:hover::after {
+    transform: scaleX(1);
+    background-color: pink;
+}

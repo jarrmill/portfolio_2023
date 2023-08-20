@@ -17,11 +17,6 @@ export default async function Home() {
 
   return (
     <main className={styles.main}>
-        <header>
-          <div>
-            <h1>Jarrod Travel</h1>
-          </div>
-        </header>
         <LocationList content={content} />
     </main>
   )

@@ -15,3 +15,8 @@
     object-fit: cover;
     margin-bottom: 4rem;
 }
+
+.pathname {
+    color: white;
+    font-size: 4rem;
+}
