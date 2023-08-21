@@ -11,9 +11,10 @@ const generateImages = function(posts) {
         <Image
         key={post.id}
         src={post.feature_image}
+        style={{opacity: 0 }}
         fill
         priority={true}
-        className={`${styles.gallery_image} .gallery-image`}
+        className={`${styles.gallery_image} gallery-image`}
         alt="Picture of the author"
       />
     ))
@@ -23,12 +24,8 @@ export default function Page({ posts, location }) {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-      const url = `${pathname}?${searchParams}`
-      console.log(url)
-      const images = document.querySelectorAll(".gallery-image");
-      console.log(images);
-      gsap.fromTo(".gallery-image", {opacity: 0}, {opacity: 1, duration: 1});
-  }, [pathname, searchParams])
+      gsap.to(".gallery-image", {opacity: 1, duration: 1, stagger: .3});
+  }, [])
   return (
     <div className={styles.gallery_container}>
         {generateImages(posts)}

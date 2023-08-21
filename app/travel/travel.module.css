@@ -32,6 +32,7 @@
     color: white;
     font-family: Helvetica, Arial, sans-serif;
     opacity: .3;
+    cursor: pointer;
 }
 
 .image_container {
@@ -101,9 +102,10 @@
     }
 
     .main li {
-        font-size: 3rem;
+        font-size: 2rem;
         transition: none;
         position: relative;
+        padding-bottom: .5rem;
     }
 
     .location {

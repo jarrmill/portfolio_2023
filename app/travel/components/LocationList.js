@@ -1,18 +1,27 @@
 "use client"
 
-import Link from 'next/link';
 import gsap from "gsap";
 import styles from '../travel.module.css'
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { cleanTagName } from '../utils/helpers';
+import { useRouter } from 'next/navigation'
 import Image from 'next/image';
 
 
 export default function LocationList({ content }) { 
     const itemsRef = useRef(null);
     const imagesRef = useRef(null);
+    const router = useRouter()
     const [hoveredTag, setHoveredTag] = useState(null);
 
+    useEffect(() => {
+      gsap.to('.location_container', {
+        opacity: 1,
+        duration: 2,
+        stagger: .3
+      })
+    }, []);
+  
     // because items is a dynamic list, we need to use this function to keep track of the correct ref
     function getMap() {
         if (!itemsRef.current) {
@@ -62,8 +71,13 @@ export default function LocationList({ content }) {
             return;
         }
 
-        handleImageEnter(itemId, idx);
-        setHoveredTag(itemId);
+        // when the user leaves the tag list, this function will be called without an idx
+        // we don't want an image to appear in this case
+        if(idx !== undefined) {
+            handleImageEnter(itemId, idx);
+            setHoveredTag(itemId);
+        }
+
         const map = getMap();
         const node = map.get(itemId);
 
@@ -79,10 +93,14 @@ export default function LocationList({ content }) {
             'opacity': 1,
             'duration': 1
         }
-        gsap.fromTo(node, from, to);
+        if(idx !== undefined) {
+            gsap.fromTo(node, from, to);
+        } else {
+            gsap.to(node, to);
+        }
     }
 
-    const handleMouseLeave = (itemId, idx) => {
+    const handleMouseLeave = (itemId) => {
         if (!itemId) {
             return;
         }
@@ -105,21 +123,48 @@ export default function LocationList({ content }) {
         gsap.fromTo(node, from, to);
     }
 
-    const generateTags = function({ tags, posts }) {
+    const handleContainerLeave = () => {
+        // get all the inactive nodes and trigger the handleMouseLeave event on them
+        const map = getMap();
+        map.forEach((node, key) => {
+            handleMouseEnter(key);
+        });
+    }
+
+    const handleRoute = (e, route) => {
+        e.preventDefault();
+        handleImageLeave(hoveredTag);
+        gsap.to('.location_container', {
+          opacity: 0,
+          duration: 1,
+          ease: "expo.out",
+          stagger: .3,
+          onComplete: () => {
+            router.push(`/travel/${route}`);
+          }
+        });
+    }
+
+    const generateTags = function({ tags }) {
         return tags.map((tag, i) => (
           <li
+            className='location_container'
+            style={{'opacity': 0}}
             key={tag.id}
             onMouseEnter={e => handleMouseEnter(tag.id, i)} 
             onMouseLeave={e => handleMouseLeave(tag.id, i)}
             >
-            <span
-                className={styles.location}
-                />
-            <span className={styles.location_ghost}>
+            <span className={styles.location} />
+            <a
+                className={styles.location_ghost}
+                href={`/travel/${tag.name}`}
+                onClick={(e) => handleRoute(e, tag.name)}
+                >
                 {cleanTagName(tag.name)}
-            </span>
-            <Link
+            </a>
+            <a
               href={`/travel/${tag.name}`}
+              onClick={(e) => handleRoute(e, tag.name)}
               ref={(node) => {
                   const map = getMap();
                   if (node) {
@@ -128,7 +173,7 @@ export default function LocationList({ content }) {
                     map.delete(tag.id);
                   }
                 }}
-            >{cleanTagName(tag.name)}</Link>
+            >{cleanTagName(tag.name)}</a>
           </li>
         ))
     }
@@ -162,7 +207,7 @@ export default function LocationList({ content }) {
     }
 
     return (
-        <ul>
+        <ul onMouseLeave={e => handleContainerLeave()}>
         {generateTags(content)}
         <div className={styles.image_container}>
             {generateImages(content)}
