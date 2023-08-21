@@ -11,8 +11,7 @@ const generateImages = function(posts) {
         <Image
         key={post.id}
         src={post.feature_image}
-        width={500}
-        height={500}
+        fill
         priority={true}
         className={`${styles.gallery_image} .gallery-image`}
         alt="Picture of the author"
@@ -31,7 +30,7 @@ export default function Page({ posts, location }) {
       gsap.fromTo(".gallery-image", {opacity: 0}, {opacity: 1, duration: 1});
   }, [pathname, searchParams])
   return (
-    <div className={styles.main}>
+    <div className={styles.gallery_container}>
         {generateImages(posts)}
     </div>)
 }

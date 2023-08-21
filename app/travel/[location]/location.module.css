@@ -9,7 +9,16 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
-.main img {
+.gallery_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.gallery_image {
+    position: relative !important;
     width: auto;
     height: 90vh;
     object-fit: cover;
@@ -19,4 +28,17 @@
 .pathname {
     color: white;
     font-size: 4rem;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .main {
+        padding: 2rem;
+    }
+    .gallery_image {
+        width: auto;
+        height: 30vh;
+        object-fit: contain;
+    }
+    
 }

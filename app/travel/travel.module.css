@@ -59,6 +59,7 @@
     align-items: center;
     padding: 10px;
     height: 60px;
+    color: white;
 }
 
 .navbar_logo {
@@ -91,4 +92,30 @@
 .navbar_section:hover::after {
     transform: scaleX(1);
     background-color: pink;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .main {
+        padding: 2rem 4rem;
+    }
+
+    .main li {
+        font-size: 3rem;
+        transition: none;
+        position: relative;
+    }
+
+    .location {
+        visibility: hidden;
+        position: absolute;
+    }
+    
+    .location_ghost {
+        visibility: hidden;
+        position: absolute;
+        color: white;
+        font-family: Helvetica, Arial, sans-serif;
+        opacity: .3;
+    }
 }
