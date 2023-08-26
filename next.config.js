@@ -4,9 +4,9 @@ const nextConfig = {
         remotePatterns: [
           {
             protocol: 'https',
-            hostname: 'jarrodcodes.ghost.io',
+            hostname: 'imagedelivery.net',
             port: '',
-            pathname: '/content/images/**',
+            pathname: '/**',
           },
         ],
       },

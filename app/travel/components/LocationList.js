@@ -3,7 +3,6 @@
 import gsap from "gsap";
 import styles from '../travel.module.css'
 import { useRef, useState, useEffect } from 'react';
-import { cleanTagName } from '../utils/helpers';
 import { useRouter } from 'next/navigation'
 import Image from 'next/image';
 
@@ -13,6 +12,7 @@ export default function LocationList({ content }) {
     const imagesRef = useRef(null);
     const router = useRouter()
     const [hoveredTag, setHoveredTag] = useState(null);
+    const [images, setImages] = useState(Object.keys(content).map(key => content[key][0]));
 
     useEffect(() => {
       gsap.to('.location_container', {
@@ -145,63 +145,58 @@ export default function LocationList({ content }) {
         });
     }
 
-    const generateTags = function({ tags }) {
-        return tags.map((tag, i) => (
+    const generateTags = function() {
+        return images.map((image, i) => (
           <li
             className='location_container'
             style={{'opacity': 0}}
-            key={tag.id}
-            onMouseEnter={e => handleMouseEnter(tag.id, i)} 
-            onMouseLeave={e => handleMouseLeave(tag.id, i)}
+            key={i}
+            onMouseEnter={e => handleMouseEnter(image.id, i)} 
+            onMouseLeave={e => handleMouseLeave(image.id, i)}
             >
             <span className={styles.location} />
             <a
                 className={styles.location_ghost}
-                href={`/travel/${tag.name}`}
-                onClick={(e) => handleRoute(e, tag.name)}
+                href={`/travel/${image.slug}`}
+                onClick={(e) => handleRoute(e, image.slug)}
                 >
-                {cleanTagName(tag.name)}
+                {image.name}
             </a>
             <a
-              href={`/travel/${tag.name}`}
-              onClick={(e) => handleRoute(e, tag.name)}
+              href={`/travel/${image.slug}`}
+              onClick={(e) => handleRoute(e, image.slug)}
               ref={(node) => {
                   const map = getMap();
                   if (node) {
-                    map.set(tag.id, node);
+                    map.set(image.id, node);
                   } else {
-                    map.delete(tag.id);
+                    map.delete(image.id);
                   }
                 }}
-            >{cleanTagName(tag.name)}</a>
+            >{image.name}</a>
           </li>
         ))
     }
 
-    const generateImages = function({ posts }) {
-        // filter posts so we only show the first post for each location
-        const postsMap = new Map();
-        posts.forEach(post => {
-            if (!postsMap.has(post.primary_tag.name)) {
-                postsMap.set(post.primary_tag.name, post);
-            }
-        });
-        return Array.from(postsMap).map(([key, post]) => (
+    const generateImages = function(images) {
+        const firstImages = Object.keys(images).map(key => images[key][0]);
+
+        return firstImages.map((image) => (
             <Image
-            key={key}
-            src={post.feature_image}
+            key={image.id}
+            src={image.url}
             className={`${styles.tag_image}`}
             width={500}
             height={500}
             ref={(node) => {
                 const map = getImagesMap();
                 if (node) {
-                  map.set(post.primary_tag.id, node);
+                  map.set(image.id, node);
                 } else {
-                  map.delete(post.primary_tag.id);
+                  map.delete(image.id);
                 }
               }}
-            alt={post.title}
+            alt={image.id}
           />
         ))
     }

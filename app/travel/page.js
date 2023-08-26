@@ -1,6 +1,7 @@
 import 'server-only'
 
 import { getContent } from './utils/get-content';
+import { cleanData } from './utils/helpers';
 import LocationList from './components/LocationList';
 
 import styles from './travel.module.css'
@@ -13,11 +14,12 @@ const inter = Inter({
 })
 
 export default async function Home() {
-  const content = await getContent()
+  const data = await getContent();
+  const images = cleanData(data);
 
   return (
     <main className={styles.main}>
-        <LocationList content={content} />
+        <LocationList content={images} />
     </main>
   )
 }

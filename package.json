@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tryghost/content-api": "^1.11.16",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "gsap": "^3.12.2",

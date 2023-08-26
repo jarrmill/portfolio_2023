@@ -6,11 +6,11 @@ import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import gsap from "gsap";
 
-const generateImages = function(posts) {
-    return posts.map(post => (
+const generateImages = function(images) {
+    return images.map(image => (
         <Image
-        key={post.id}
-        src={post.feature_image}
+        key={image.id}
+        src={image.url}
         style={{opacity: 0 }}
         fill
         priority={true}
@@ -19,7 +19,7 @@ const generateImages = function(posts) {
       />
     ))
 }
-export default function Page({ posts, location }) {
+export default function Page({ images, location }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -28,6 +28,6 @@ export default function Page({ posts, location }) {
   }, [])
   return (
     <div className={styles.gallery_container}>
-        {generateImages(posts)}
+        {generateImages(images)}
     </div>)
 }
