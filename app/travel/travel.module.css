@@ -38,7 +38,9 @@
 .image_container {
     position: absolute;
     top: 10vh;
-    left: 40vw;
+    left: 30vw;
+    width: 60vw;
+    height: 33vw;
     pointer-events: none;
     z-index: -10;
 }

@@ -186,8 +186,7 @@ export default function LocationList({ content }) {
             key={image.id}
             src={image.url}
             className={`${styles.tag_image}`}
-            width={500}
-            height={500}
+            fill
             ref={(node) => {
                 const map = getImagesMap();
                 if (node) {

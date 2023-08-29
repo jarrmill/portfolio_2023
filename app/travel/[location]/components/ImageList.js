@@ -13,7 +13,6 @@ const generateImages = function(images) {
         src={image.url}
         style={{opacity: 0 }}
         fill
-        priority={true}
         className={`${styles.gallery_image} gallery-image`}
         alt="Picture of the author"
       />
