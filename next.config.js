@@ -9,6 +9,8 @@ const nextConfig = {
             pathname: '/**',
           },
         ],
+        loader: 'custom',
+        loaderFile: './imageLoader.js'
       },
 }
 

@@ -3,6 +3,7 @@ import 'server-only'
 import { getContent } from './utils/get-content';
 import { cleanData } from './utils/helpers';
 import LocationList from './components/LocationList';
+import NavBar from './components/navbar';
 
 import styles from './travel.module.css'
 import { Inter } from 'next/font/google'
@@ -19,6 +20,7 @@ export default async function Home() {
 
   return (
     <main className={styles.main}>
+        <NavBar />
         <LocationList content={images} />
     </main>
   )

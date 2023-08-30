@@ -12,6 +12,7 @@ const generateImages = function(images) {
         key={image.id}
         src={image.url}
         style={{opacity: 0 }}
+        sizes="(max-width: 480px) 480px, (max-width: 780px) 50vw, 100vw"
         fill
         className={`${styles.gallery_image} gallery-image`}
         alt="Picture of the author"
@@ -28,5 +29,6 @@ export default function Page({ images, location }) {
   return (
     <div className={styles.gallery_container}>
         {generateImages(images)}
+        <h2 className={styles.location_text}>{location}</h2>
     </div>)
 }
