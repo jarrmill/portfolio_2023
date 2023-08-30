@@ -3,7 +3,7 @@ import 'server-only'
 import { getContent } from '../utils/get-content';
 import { cleanData } from '../utils/helpers';
 import ImageList from  './components/ImageList';
-import NavBar from '../components/navbar';
+import NavBar from '../components/NavBar';
 import styles from './location.module.css'
 
 const filterPosts = function(posts, location) {
