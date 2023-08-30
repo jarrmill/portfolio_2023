@@ -122,9 +122,9 @@
     content: '';
     height: 100%;
     width: 4px;
-    right: -19px;
+    right: -18px;
     position: relative;
-    background-color: orange;
+    background-color: rgb(109, 168, 109);
     transform-origin: 50% 100%;
     transform: scaleY(0);
     transition: all 1s;
@@ -132,7 +132,6 @@
 
 .navbar_section:hover::after {
     transform: scaleY(1);
-    background-color: pink;
 }
 
 /* Mobile */
