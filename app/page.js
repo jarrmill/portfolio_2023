@@ -6,7 +6,7 @@ import Computers from './components/Computers'
 import Overlay from './components/Overlay'
 
 export default function Home() {
-  const [width] = useState(window.innerWidth);
+  const width = typeof window === 'undefined' ? 1200 : window.innerWidth;
 
   return (
     <main className={styles.main}>
