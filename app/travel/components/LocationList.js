@@ -2,10 +2,12 @@
 
 import gsap from "gsap";
 import styles from '../travel.module.css'
-import { useRef, useState, useEffect } from 'react';
+import getSkeletonDataUrl from "../utils/getSkeletonDataUrl";
+import { useRef, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image';
+import Image from 'next/image'
 
+const Loading = () => <div>Loading...</div>
 
 export default function LocationList({ content }) { 
     const itemsRef = useRef(null);
@@ -150,7 +152,7 @@ export default function LocationList({ content }) {
           <li
             className='location_container'
             style={{'opacity': 0}}
-            key={i}
+            key={`location-${i}`}
             onMouseEnter={e => handleMouseEnter(image.id, i)} 
             onMouseLeave={e => handleMouseLeave(image.id, i)}
             >
@@ -183,29 +185,31 @@ export default function LocationList({ content }) {
 
         return firstImages.map((image) => (
             <Image
-            key={image.id}
-            src={image.url}
-            className={`${styles.tag_image}`}
-            fill
-            ref={(node) => {
-                const map = getImagesMap();
-                if (node) {
-                  map.set(image.id, node);
-                } else {
-                  map.delete(image.id);
-                }
-              }}
-            alt={image.id}
-          />
+                key={`image-${image.id}`}
+                src={image.url}
+                className={`${styles.tag_image}`}
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${getSkeletonDataUrl(720, 720)}`}
+                fill
+                ref={(node) => {
+                    const map = getImagesMap();
+                    if (node) {
+                    map.set(image.id, node);
+                    } else {
+                    map.delete(image.id);
+                    }
+                }}
+                alt={image.id}
+            />
         ))
     }
 
     return (
         <ul onMouseLeave={e => handleContainerLeave()}>
-        {generateTags(content)}
-        <div className={styles.image_container}>
-            {generateImages(content)}
-        </div>
+            {generateTags(content)}
+            <div className={styles.image_container}>
+                {generateImages(content)}
+            </div>
         </ul>
     )
   }
