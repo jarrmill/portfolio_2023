@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import styles from '../travel.module.css'
-import { FiArrowLeftCircle, FiInstagram, FiHome } from "react-icons/fi";
+import styles from './navbar.module.css'
+import { FiArrowLeftCircle, FiInstagram, FiLinkedin, FiHome } from "react-icons/fi";
 
 export default function NavBar({ showBack = false, fixed = false }) {
     const containerStyle = {
@@ -28,7 +28,10 @@ export default function NavBar({ showBack = false, fixed = false }) {
             </div>
             <div>
               <div className={styles.navbar_section}>
-                <Link href="#" className={styles.navbar_link}><FiInstagram /></Link>
+                <Link href="https://www.instagram.com/jawwwod/" className={styles.navbar_link}><FiInstagram /></Link>
+              </div>
+              <div className={styles.navbar_section}>
+                <Link href="https://www.linkedin.com/in/jarrmillatx/" className={styles.navbar_link}><FiLinkedin /></Link>
               </div>
             </div>
           </div>

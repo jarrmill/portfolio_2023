@@ -1,9 +1,15 @@
 .main {
-  position: absolute;
   height: 100vh;
   width: 100vw;
   margin: 0;
   padding: 0;
+  background-color: #e7e5e3;
+}
+
+.overlay_container {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* Enable hover only on non-touch devices */
@@ -105,24 +111,5 @@
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
   }
 }
