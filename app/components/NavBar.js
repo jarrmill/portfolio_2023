@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from './navbar.module.css'
-import { FiArrowLeftCircle, FiInstagram, FiLinkedin, FiHome } from "react-icons/fi";
+import { FiArrowLeftCircle, FiInstagram, FiLinkedin, FiGithub, FiHome } from "react-icons/fi";
+import { FaThreads } from "react-icons/fa6";
 
 export default function NavBar({ showBack = false, fixed = false }) {
     const containerStyle = {
@@ -29,6 +30,12 @@ export default function NavBar({ showBack = false, fixed = false }) {
             <div>
               <div className={styles.navbar_section}>
                 <Link href="https://www.instagram.com/jawwwod/" className={styles.navbar_link}><FiInstagram /></Link>
+              </div>
+              <div className={styles.navbar_section}>
+                <Link href="https://www.github.com/jarrmill/" className={styles.navbar_link}><FiGithub /></Link>
+              </div>
+              <div className={styles.navbar_section}>
+                <Link href="https://www.threads.net/@jawwwod" className={styles.navbar_link}><FaThreads /></Link>
               </div>
               <div className={styles.navbar_section}>
                 <Link href="https://www.linkedin.com/in/jarrmillatx/" className={styles.navbar_link}><FiLinkedin /></Link>

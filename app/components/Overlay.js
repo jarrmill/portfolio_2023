@@ -5,7 +5,7 @@ import ComputerSketch from './ComputerSketch.js';
 import Blurb from "./Blurb";
 import Link from 'next/link';
 import { FiTwitter, FiInstagram, FiLinkedin, FiMap } from "react-icons/fi";
-
+import { FaThreads } from "react-icons/fa6";
 
 export default function Overlay() {
   const { jobs } = resumeData;
@@ -25,7 +25,7 @@ export default function Overlay() {
                 <Link href="https://www.linkedin.com/in/jarrmillatx" className={styles.nav_link}><FiLinkedin /></Link>  
               </li>
               <li>
-                <Link href="https://www.threads.net/@jawwwod" className={styles.nav_link}><FiTwitter /></Link>  
+                <Link href="https://www.threads.net/@jawwwod" className={styles.nav_link}><FaThreads /></Link> 
               </li>
               <li>
                 <Link href="https://www.instagram.com/jawwwod/" className={styles.nav_link}><FiInstagram /></Link>
