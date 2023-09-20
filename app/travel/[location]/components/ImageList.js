@@ -3,13 +3,10 @@
 import Image from 'next/image';
 import styles from '../location.module.css'
 import { useEffect } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
 import getSkeletonDataUrl from '../../utils/getSkeletonDataUrl';
 import gsap from "gsap";
 
 const generateImages = function(images) {
-    const dataUrl = `data:image/svg+xml;base64,${getSkeletonDataUrl(480, 480)}`;
-    console.log(dataUrl);
     return images.map(image => (
         <Image
         key={image.id}
@@ -25,9 +22,6 @@ const generateImages = function(images) {
     ))
 }
 export default function Page({ images, location }) {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-
   useEffect(() => {
       gsap.to(".gallery-image", {opacity: 1, duration: 1, stagger: .3});
   }, [])

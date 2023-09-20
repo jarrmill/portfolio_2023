@@ -7,14 +7,12 @@ import { useRef, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
-const Loading = () => <div>Loading...</div>
-
 export default function LocationList({ content }) { 
     const itemsRef = useRef(null);
     const imagesRef = useRef(null);
     const router = useRouter()
     const [hoveredTag, setHoveredTag] = useState(null);
-    const [images, setImages] = useState(Object.keys(content).map(key => content[key][0]));
+    const [images] = useState(Object.keys(content).map(key => content[key][0]));
 
     useEffect(() => {
       gsap.to('.location_container', {

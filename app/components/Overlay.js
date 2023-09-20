@@ -4,7 +4,7 @@ import JobOverlay from "./JobOverlay";
 import ComputerSketch from './ComputerSketch.js';
 import Blurb from "./Blurb";
 import Link from 'next/link';
-import { FiTwitter, FiInstagram, FiLinkedin, FiMap } from "react-icons/fi";
+import { FiInstagram, FiLinkedin, FiMap } from "react-icons/fi";
 import { FaThreads } from "react-icons/fa6";
 
 export default function Overlay() {
