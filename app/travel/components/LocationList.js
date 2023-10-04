@@ -13,6 +13,7 @@ export default function LocationList({ content }) {
     const router = useRouter()
     const [hoveredTag, setHoveredTag] = useState(null);
     const [images] = useState(Object.keys(content).map(key => content[key][0]));
+    const [shouldHideImages, setShouldHideImages] = useState(false);
 
     useEffect(() => {
       gsap.to('.location_container', {
@@ -67,7 +68,7 @@ export default function LocationList({ content }) {
     }
 
     const handleMouseEnter = (itemId, idx) => {
-        if (!itemId) {
+        if (!itemId || shouldHideImages) {
             return;
         }
 
@@ -134,8 +135,9 @@ export default function LocationList({ content }) {
     const handleRoute = (e, route) => {
         e.preventDefault();
         handleImageLeave(hoveredTag);
+        setShouldHideImages(true);
         gsap.to('.location_container', {
-          opacity: 0,
+          autoAlpha: 0,
           duration: 1,
           ease: "expo.out",
           stagger: .3,
