@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import styles from '../location.module.css'
 import { useEffect } from 'react'
-import getSkeletonDataUrl from '../../utils/getSkeletonDataUrl';
 import gsap from "gsap";
 
 const generateImages = function(images) {
@@ -13,8 +12,6 @@ const generateImages = function(images) {
         src={image.url}
         style={{opacity: 0 }}
         sizes="(max-width: 480px) 480px, (max-width: 780px) 50vw, 100vw"
-        placeholder="blur"
-        blurDataURL={`data:image/svg+xml;base64,${getSkeletonDataUrl(720, 720)}`}
         fill
         className={`${styles.gallery_image} gallery-image`}
         alt="Picture of the author"
@@ -23,7 +20,7 @@ const generateImages = function(images) {
 }
 export default function Page({ images, location }) {
   useEffect(() => {
-      gsap.to(".gallery-image", {opacity: 1, duration: 1, stagger: .3});
+      gsap.to(".gallery-image", {opacity: 1, duration: 1, stagger: .8});
   }, [])
   return (
     <div className={styles.gallery_container}>

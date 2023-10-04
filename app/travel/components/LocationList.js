@@ -2,7 +2,6 @@
 
 import gsap from "gsap";
 import styles from '../travel.module.css'
-import getSkeletonDataUrl from "../utils/getSkeletonDataUrl";
 import { useRef, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
@@ -188,8 +187,6 @@ export default function LocationList({ content }) {
                 key={`image-${image.id}`}
                 src={image.url}
                 className={`${styles.tag_image}`}
-                placeholder="blur"
-                blurDataURL={`data:image/svg+xml;base64,${getSkeletonDataUrl(720, 720)}`}
                 fill
                 ref={(node) => {
                     const map = getImagesMap();
