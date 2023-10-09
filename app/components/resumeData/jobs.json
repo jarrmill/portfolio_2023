@@ -6,10 +6,9 @@
     "end": "June 2023",
     "blurb": "Front End Developer at a Product-Analytics software company based in Raleigh",
     "points": [
-      "Generated new features for clients by working closely with designers and developers to develop new, reusable VueJS solutions.",
-      "Decreased accessibility violations by planning and executing accessibility improvements in a shared components library.",
-      "Mitigated technical debt by creating in-house code solutions in areas that required third-party dependencies.",
-      "Improved documentation and code reliability by implementing Cypress and Storybook testing with automated accessibility scanning."
+      "Maintained an internal components library used by a wide, international team of engineers.",
+      "Ran accessibility audits and lead work to improve site accessibility.",
+      "Provided internal developer support by building out documentation and working with developers to improve their experience with the components library."
     ],
     "skills": [
       "VueJS",
@@ -28,8 +27,7 @@
     "blurb": "Front End Developer at an Austin-based startup",
     "points": [
       "Improved client UX experience by revamping legacy AngularJS views to VueJS with improved UX experiences.",
-      "Reduced code risk by leveraging Vue Test Utils, Jest, Mocha, and Chai to build test infrastructure against previously untested code.",
-      "Fastened load times and reduced tech debt by porting legacy AngularJS UI code to meet modern needs."
+      "Reduced code risk by leveraging Vue Test Utils, Jest, Mocha, and Chai to build test infrastructure against previously untested code."
     ],
     "skills": [
       "VueJS",
@@ -47,9 +45,8 @@
     "end": "November 2020",
     "blurb": "JavaScript Developer at an Austin-based startup",
     "points": [
-      "Improved customer efficiencies by developing JavaScript software integrations to provide several large CRMs, such as Salesforce and Infusionsoft.",
-      "Produced secure login experiences by building integrations with OAuth functionality, from Google OAuth to client-specific OAuth implementations.",
-      "Decreased bugs in legacy client code by writing AngularJS code and new tests to ensure minimal bugs and increased functionality."
+      "Developed JavaScript software integrations to provide several large CRMs, such as Salesforce and Infusionsoft.",
+      "Produced secure login experiences by building integrations with OAuth functionality, from Google OAuth to client-specific OAuth implementations."
     ],
     "skills": [
       "JavaScript",
